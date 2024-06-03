@@ -12,6 +12,11 @@ function fetchData() {
 fetchData()
   .then((data) => {
     // Filter out odd numbers
+	  setTimeout(()=>{
+		  let odd=data.filter((num)=> num%2 !== 0);
+		  const outputElement = document.getElementById("output");
+    outputElement.textContent = odd.join(", ");
+	  },1000)
     const filteredArray = data.filter((num) => num % 2 === 0);
     return filteredArray;
   })
@@ -22,8 +27,10 @@ fetchData()
   })
   .then((finalResult) => {
     // Update the text of the HTML element with ID "output"
-    const outputElement = document.getElementById("output");
+    setTimeout(()=>{
+		const outputElement = document.getElementById("output");
     outputElement.textContent = finalResult.join(", ");
+	},2000);
   })
   .catch((error) => {
     console.error("Error:", error);
